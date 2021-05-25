@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-module.exports = (Discord, client, message) => {
+module.exports = async (Discord, client, message) => {
   const prefix = "-";
   //console.log(message.content.startsWith("-"));
   if (!message.content.startsWith(prefix) || message.author.bot) return;

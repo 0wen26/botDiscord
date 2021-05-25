@@ -1,8 +1,10 @@
 module.exports = {
   name: "reactionday",
   description: "Elegir el trabajo diario",
+
   async execute(client, message, args, Discord) {
-    //console.log("hola");
+    const profileModel = require("../models/profileSchema");
+
     const channel = "841815185244422195";
 
     const weworkEmoji = "<:WEW:841838835964182588>";
@@ -38,40 +40,95 @@ module.exports = {
     messageEmbed.react(weworkEmoji);
     messageEmbed.react(levelEmoji);
     messageEmbed.react(singaEmoji);
-    messageEmbed.react(depMñnEmoji);
-    messageEmbed.react(depTrdEmoji);
-    messageEmbed.react(depNocheEmoji);
-    messageEmbed.react(cargoEmoji);
-    messageEmbed.react(emiratesEmoji);
-    messageEmbed.react(offEmoji);
-    messageEmbed.react(sabEmoji);
-    messageEmbed.react(deltaEmoji);
+    // messageEmbed.react(depMñnEmoji);
+    // messageEmbed.react(depTrdEmoji);
+    // messageEmbed.react(depNocheEmoji);
+    // messageEmbed.react(cargoEmoji);
+    // messageEmbed.react(emiratesEmoji);
+    // messageEmbed.react(offEmoji);
+    // messageEmbed.react(sabEmoji);
+    // messageEmbed.react(deltaEmoji);
 
     let count = 0;
     let ultimoMsg = message.channel.lastMessageID;
     client.on("messageReactionAdd", async (reaction, user) => {
-      //console.log(count + "la primera");
+      const fecha = new Date();
+      const año = fecha.getFullYear();
+      const mes = fecha.getMonth() + 1;
+      const dia = fecha.getDate();
+      const fechaActual = `${dia}/${mes}/${año}`;
+
       if (reaction.message.partial) await reaction.message.fetch();
       if (reaction.partial) await reaction.fetch();
       if (user.bot) return;
       if (!reaction.message.guild) return;
-
+      let userId = user.id;
+      let profileData;
       if (reaction.message.channel.id == channel) {
-        //console.log(reaction.message.id);
+        console.log(reaction.emoji.name);
         if (ultimoMsg === reaction.message.id && count === 0) {
           count++;
-          console.log(count + "la segunda");
           if (reaction.emoji.name === "WEW") {
-            let userId = user.id;
-            //console.log(reaction.message.id);
-            // message.channel.send(
-            //   reaction.message.guild.members.cache.get(userId).nickname
-            // );
-            console.log(
-              reaction.message.guild.members.cache.get(userId).nickname
-            );
-          } else if (reaction.emoji.name === "🇲") {
-            console.log("hola");
+            let trabajo = "Wework";
+
+            try {
+              profileData = await profileModel.findOne({
+                userID: userId,
+                fecha: fechaActual,
+              });
+              if (!profileData) {
+                let profile = await profileModel.create({
+                  userID: userId,
+                  messageID: reaction.message.id,
+                  apodo:
+                    reaction.message.guild.members.cache.get(userId).nickname,
+                  icono: "<:WEW:841838835964182588>",
+                  fecha: fechaActual,
+                  trabajo: trabajo,
+                });
+                profile.save();
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          } else if (reaction.emoji.name === "LEV") {
+            let trabajo = "LEVEL";
+
+            try {
+              if (!profileData) {
+                let profile = await profileModel.create({
+                  userID: userId,
+                  messageID: reaction.message.id,
+                  apodo:
+                    reaction.message.guild.members.cache.get(userId).nickname,
+                  icono: "<:LEV:841838835750666270>",
+                  fecha: fechaActual,
+                  trabajo: trabajo,
+                });
+                profile.save();
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          } else if (reaction.emoji.name === "Singa") {
+            let trabajo = "SINGAPORE";
+
+            try {
+              if (!profileData) {
+                let profile = await profileModel.create({
+                  userID: userId,
+                  messageID: reaction.message.id,
+                  apodo:
+                    reaction.message.guild.members.cache.get(userId).nickname,
+                  icono: "<:Singa:841840059590377502>",
+                  fecha: fechaActual,
+                  trabajo: trabajo,
+                });
+                profile.save();
+              }
+            } catch (error) {
+              console.log(error);
+            }
           } else {
             return;
           }
@@ -81,3 +138,13 @@ module.exports = {
     });
   },
 };
+//console.log(reaction.message.id);
+// message.channel.send(
+//   reaction.message.guild.members.cache.get(userId).nickname
+// );
+// console.log(
+//   reaction.message.guild.members.cache.get(userId).nickname
+// );
+//console.log(reaction.message.id);
+//console.log(fechaActual);
+//console.log("hola");
