@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const profileSchema = new mongoose.Schema({
+const dailySchema = new mongoose.Schema({
   userID: { type: String },
   messageID: { type: String },
   apodo: { type: String },
@@ -9,6 +9,6 @@ const profileSchema = new mongoose.Schema({
   trabajo: { type: String },
 });
 
-const model = mongoose.model("ProfileModels", profileSchema);
+const model = mongoose.model("DailyModel", dailySchema);
 
 module.exports = model;

@@ -1,15 +1,15 @@
 module.exports = {
   name: "resumen",
   description: "resumen daily",
-  async execute(client, message, args) {
-    const profileModel = require("../models/profileSchema");
+  async execute(client, message, args, Discord) {
+    const profileModel = require("../models/dailySchema");
     const fecha = new Date();
     const año = fecha.getFullYear();
     const mes = fecha.getMonth() + 1;
     const dia = fecha.getDate();
     const messageID =
       message.guild.members.cache.get("841815763950108713").lastMessageID;
-
+    let mensaje = "";
     const fechaActual = `${dia}/${mes}/${año}`;
     try {
       profileData = await profileModel.find({
@@ -22,12 +22,19 @@ module.exports = {
         console.log("nada");
       } else {
         for (const i of profileData) {
-          message.channel.send(`${i.apodo} trabaja ${i.icono} ${i.trabajo}`);
+          mensaje =
+            mensaje + `${i.apodo} TRABAJARÁ DE ${i.trabajo} ${i.icono} \n`;
         }
+
+        let embed = new Discord.MessageEmbed()
+          .setColor("#e42643")
+          .setTitle(`El ${dia + 1} del ${mes} del${año} estos son los turnos:`)
+          .setDescription(mensaje);
+        message.channel.send(embed);
       }
       //
     } catch (error) {
-      console.log(err);
+      console.log(error);
     }
   },
 };
