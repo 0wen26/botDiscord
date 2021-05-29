@@ -6,7 +6,7 @@ module.exports = {
     const fecha = new Date();
     const año = fecha.getFullYear();
     const mes = fecha.getMonth() + 1;
-    const dia = fecha.getDate();
+    const dia = fecha.getDate() + 1;
     const messageID =
       message.guild.members.cache.get("841815763950108713").lastMessageID;
     let mensaje = "";
@@ -14,7 +14,7 @@ module.exports = {
     try {
       profileData = await profileModel.find({
         //icono: "<:WEW:841838835964182588>",
-        messageID: messageID,
+        //messageID: messageID,
         fecha: fechaActual,
       });
 
@@ -28,7 +28,7 @@ module.exports = {
 
         let embed = new Discord.MessageEmbed()
           .setColor("#e42643")
-          .setTitle(`El ${dia + 1} del ${mes} del${año} estos son los turnos:`)
+          .setTitle(`El ${dia}/${mes}/${año} estos son los turnos:`)
           .setDescription(mensaje);
         message.channel.send(embed);
       }

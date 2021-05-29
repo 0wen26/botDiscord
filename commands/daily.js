@@ -7,7 +7,7 @@ module.exports = {
     const fecha = new Date();
     const año = fecha.getFullYear();
     const mes = fecha.getMonth() + 1;
-    const dia = fecha.getDate();
+    const dia = fecha.getDate() + 1;
     const fechaActual = `${dia}/${mes}/${año}`;
     const channel = "841815185244422195";
 
