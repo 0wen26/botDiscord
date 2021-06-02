@@ -3,9 +3,9 @@ module.exports = {
   description: "resumen deportados",
   async execute(client, message, args, Discord) {
     const deportadosModel = require("../models/deportadosShema");
-    let mensaje = "";
+
     try {
-      deportadosData = await deportadosModel.find({});
+      //deportadosData = await deportadosModel.find({});
       if (!deportadosData) {
         console.log("nada");
       } else {
@@ -79,18 +79,3 @@ module.exports = {
     }
   },
 };
-/* mensaje =
-            mensaje +
-            `
-            \n Nº exp: ${i.numExp} 
-          Nº asis: ${i.asistencia}
-          Comp Aerea: ${i.compAerea} 
-          F entrada: ${i.fechaEntrada}
-          H entrada: ${i.horaEntrada} 
-          Vuelo Salida: ${i.vueloSalida}
-          Fecha salida: ${i.fechaSalida}
-          Hora salida: ${i.horaSalida}
-          Hora real salida: ${i.horaRealSalida}
-          Dia real salida: ${i.diaRealSalida}
-          Motivo: ${i.motivo}`;
-          */

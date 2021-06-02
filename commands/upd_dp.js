@@ -4,7 +4,7 @@ module.exports = {
 
   async execute(client, message, args, Discord) {
     const deportadosModel = require("../models/deportadosShema");
-    let deportadoData;
+
     try {
       const result = await deportadosModel.findOneAndUpdate(
         {

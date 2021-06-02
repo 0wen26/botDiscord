@@ -5,28 +5,22 @@ module.exports = {
     const profileModel = require("../models/dailySchema");
     const fecha = new Date();
     const año = fecha.getFullYear();
-    const mes = fecha.getMonth() + 1;
-    //const dia = fecha.getDate();
-    const dia = args[0];
-    let mensaje = "";
-    if (!args[0])
-      return message.reply(
-        "please enter the amount of messages that you want to clear!"
-      );
-    //if (isNaN(args[0])) return message.reply("please enter a real number!");
 
+    const dia = args[0];
+    let embed = "";
+    if (!args[0]) return message.reply("por favor inserta una fecha!");
     try {
       profileData = await profileModel.find({
         fecha: `${dia}/${año}`,
       });
-      if (!profileData) {
-        console.log("nada");
+
+      if (profileData.length === 0) {
+        return message.reply("No se ha encontrado nada con la fecha indicada");
       } else {
         for (const i of profileData) {
-          let embed = new Discord.MessageEmbed()
+          embed = new Discord.MessageEmbed()
             .setColor("#e42643")
             .setTitle(`El ${dia}/${año} estos son los turnos:`)
-            .setDescription(mensaje)
             .addFields(
               {
                 name: "Persona",
@@ -53,8 +47,3 @@ module.exports = {
     }
   },
 };
-// await message.channel.messages
-//   .fetch({ limit: args[0] })
-//   .then((messages) => {
-//     message.channel.send(dia);
-//   });
