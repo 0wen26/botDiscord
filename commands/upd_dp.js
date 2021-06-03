@@ -28,7 +28,7 @@ module.exports = {
           new: true,
         }
       );
-      console.log(result);
+      message.channel.send("Deportado actualizado con exito");
       //
     } catch (error) {
       console.log(error);

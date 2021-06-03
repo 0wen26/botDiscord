@@ -23,6 +23,7 @@ module.exports = {
           R: args[9],
         });
         profile.save();
+        message.channel.send("Exito añadiendo al deportado");
       } else {
         message.channel.send("El expediente ya existe");
       }
