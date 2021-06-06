@@ -22,7 +22,7 @@ module.exports = {
           },
           {
             name: "si hay un nombre compuesto poner _",
-            value: `add_delta 01/06/21 195 ruben santi miguel_cantalejo andres jesus gladys saray pepa`,
+            value: `add_delta 01/06/21 195 ruben santi kevin_mitnick andres jesus gladys saray pepa`,
             inline: false,
           },
           {
