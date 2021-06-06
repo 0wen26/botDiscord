@@ -5,10 +5,10 @@ module.exports = {
     const deportadosModel = require("../models/deportadosShema");
 
     try {
-      //deportadosData = await deportadosModel.find({});
-      if (!deportadosData) {
-        console.log("nada");
-      } else {
+      deportadosData = await deportadosModel.find({
+        
+      });
+      
         for (const i of deportadosData) {
           let embed = new Discord.MessageEmbed()
             .setColor("#e42643")
@@ -72,7 +72,7 @@ module.exports = {
             );
           message.channel.send(embed);
         }
-      }
+      
       //
     } catch (error) {
       console.log(error);

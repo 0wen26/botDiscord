@@ -1,5 +1,5 @@
 module.exports = {
-  name: "help_update_delta",
+  name: "help_upd_delta",
   description: "Ayuda comando update delta",
 
   async execute(client, message, args, Discord) {
@@ -37,7 +37,7 @@ module.exports = {
             inline: false,
           },
           {
-            name: "Si te falta algun dato pon un punto hay otro comando para actualizar",
+            name: "Si te falta algun dato pon un punto porque hay otro comando para actualizar",
             value: `add_delta 01/06/21 195 ruben santi miguel . jesus . saray pepa`,
             inline: false,
           }
