@@ -34,7 +34,7 @@ module.exports = {
                 inline: false,
               },
               {
-                name: "-resum {fecha}",
+                name: "-resum {dd/m}",
                 value: `Este comando muestra el resumen del daily de la fecha indicada\n
                 el comando **-help_resum** explica como usarlo.`,
                 inline: false,
@@ -46,7 +46,7 @@ module.exports = {
                 inline: false,
               },
               {
-                name: "-deltadaily {fecha}",
+                name: "-deltadaily {dd/mm/aa}",
                 value: `Este comando muestra el daily de la delta en la fecha indicada\n
                 el comando **-help_deltadaily** explica como usarlo.`,
                 inline: false,
