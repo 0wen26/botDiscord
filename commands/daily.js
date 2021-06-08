@@ -43,6 +43,9 @@ module.exports = {
             ${deltaEmoji} DELTA \n`
       );
     let messageEmbed = await message.channel.send(embed);
+    let iconos = ['weworkEmoji','levelEmoji','singaEmoji','depMñnEmoji','depTrdEmoji',
+                  'depNocheEmoji','cargoEmoji','emiratesEmoji','offEmoji','sabEmoji','deltaEmoji'];
+    
     messageEmbed.react(weworkEmoji);
     messageEmbed.react(levelEmoji);
     messageEmbed.react(singaEmoji);

@@ -22,7 +22,7 @@ module.exports = {
               inline: false,
             },
             {
-              name: "-clear",
+              name: "-clear {numero}",
               value: `Este comando es para borrar un numero de mensajes entre 2 y 99\n
               el comando **-help_clear** explica como usarlo.`,
               inline: false,

@@ -7,13 +7,14 @@ module.exports = {
     let deltaData;
     try {
       deltaData = await deltaModel.findOne({
-        numExp: args[0],
+        fecha: args[0],
       });
+      
       if (!deltaData) {
         let profile = await deltaModel.create({
           fecha: args[0],
-          TL: args[1],
-          numVuelo: args[2],
+          TL: args[2],
+          numVuelo: args[1],
           catering_1: args[3],
           catering_2: args[4],
           patio_1: args[5],
@@ -23,9 +24,9 @@ module.exports = {
           R: args[9],
         });
         profile.save();
-        message.channel.send("Exito añadiendo al deportado");
+        message.channel.send("Exito añadiendo el daily de delta");
       } else {
-        message.channel.send("El expediente ya existe");
+        message.channel.send("la fecha tiene otro daily");
       }
       //
     } catch (error) {

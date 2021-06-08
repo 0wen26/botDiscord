@@ -4,7 +4,7 @@ module.exports = {
   async execute(client, message, args, Discord) {
     const deltaModel = require("../models/deltaShema");
     if (!args[0]) {
-      return message.reply("Debes escribir una fecha");
+      return message.reply("Debes escribir una fecha en formato dd/mm/aa por ejemplo 31/01/21");
     }
     try {
       deltaData = await deltaModel.find({
@@ -48,6 +48,7 @@ module.exports = {
                 value: `${i.patio_2}`,
                 inline: true,
               },
+              
               {
                 name: "Frontdoor",
                 value: `${i.FD}`,

@@ -8,7 +8,7 @@ module.exports = {
 
     const dia = args[0];
     let embed = "";
-    if (!args[0]) return message.reply("por favor inserta una fecha!");
+    if (!args[0]) return message.reply("por favor inserta una fecha en formato dd/m (por ejemplo 22/6 )!");
     try {
       profileData = await profileModel.find({
         fecha: `${dia}/${año}`,
